@@ -2,41 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Hookly Design System - Minimalist and Modern
+All colors MUST be HSL for consistency
 */
 
 @layer base {
   :root {
+    /* Base colors */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 210 11% 33%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Brand colors */
+    --brand-primary: 36 100% 67%; /* Soft Orange #FFAA55 */
+    --brand-primary-foreground: 0 0% 100%;
+    
+    --brand-purple: 262 90% 66%; /* Purple #A855F7 */
+    --brand-purple-foreground: 0 0% 100%;
+    
+    --brand-pink: 330 100% 71%; /* Pink #FF69B4 */
+    --brand-pink-foreground: 0 0% 100%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Semantic colors */
+    --primary: 36 100% 67%;
+    --primary-foreground: 0 0% 100%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 210 11% 33%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 262 90% 66%;
+    --accent-foreground: 0 0% 100%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 11% 33%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 11% 33%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 36 100% 67%;
 
-    --radius: 0.5rem;
+    /* Spacing system */
+    --section-padding: 5rem; /* 80px */
+    --element-spacing: 2.5rem; /* 40px */
+    --card-padding: 2rem; /* 32px */
+
+    /* Border radius */
+    --radius: 0.75rem; /* 12px for modern rounded corners */
+    --radius-sm: 0.5rem;
+    --radius-lg: 1rem;
+
+    /* Shadows */
+    --shadow-soft: 0 4px 24px -4px hsl(var(--primary) / 0.1);
+    --shadow-card: 0 1px 3px 0 hsl(210 11% 15% / 0.1), 0 1px 2px 0 hsl(210 11% 15% / 0.06);
+    --shadow-button: 0 4px 14px 0 hsl(var(--primary) / 0.25);
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--brand-primary)), hsl(var(--brand-purple)));
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 20% 98%));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--brand-purple)), hsl(var(--brand-pink)));
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +134,94 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+    line-height: 1.2;
+  }
+
+  h1 {
+    @apply text-5xl md:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
+}
+
+@layer components {
+  /* Hero section styling */
+  .hero-section {
+    @apply min-h-[80vh] flex items-center justify-center;
+    padding: var(--section-padding) 1rem;
+  }
+
+  /* Card components with Hookly styling */
+  .benefit-card {
+    @apply bg-card rounded-[var(--radius)] p-[var(--card-padding)] text-center border border-border/50;
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-smooth);
+  }
+
+  .benefit-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Button variants */
+  .btn-hero {
+    @apply bg-primary text-primary-foreground rounded-[var(--radius)] px-8 py-4 font-semibold text-lg;
+    box-shadow: var(--shadow-button);
+    transition: var(--transition-bounce);
+  }
+
+  .btn-hero:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 25px -5px hsl(var(--primary) / 0.35);
+  }
+
+  .btn-secondary {
+    @apply border-2 border-muted-foreground/30 text-foreground bg-background rounded-[var(--radius)] px-8 py-4 font-semibold text-lg;
+    transition: var(--transition-smooth);
+  }
+
+  .btn-secondary:hover {
+    @apply border-primary/50 text-primary bg-primary/5;
+    transform: translateY(-1px);
+  }
+
+  /* Section spacing */
+  .section-padding {
+    padding: var(--section-padding) 1rem;
+  }
+
+  .element-spacing {
+    margin-bottom: var(--element-spacing);
+  }
+
+  /* Animations */
+  .fade-in {
+    @apply opacity-0 translate-y-4;
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Footer styling */
+  .footer-section {
+    @apply bg-slate-800 text-white;
   }
 }

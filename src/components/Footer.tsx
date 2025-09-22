@@ -7,8 +7,8 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 items-center">
           {/* Left - Contact Info */}
           <div className="text-center md:text-left">
-            <h4 className="font-semibold text-white mb-4">Contact Us</h4>
-            <p className="text-slate-300 mb-2">
+            <h4 className="font-semibold text-white mb-4">Contact Us 📧</h4>
+            <p className="text-white/80 mb-4">
               <a href="mailto:support@hookly.com" className="hover:text-white transition-colors">
                 support@hookly.com
               </a>
@@ -18,7 +18,7 @@ const Footer = () => {
                 href="https://instagram.com/hooklyai"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-300 hover:text-white transition-colors"
+                className="text-white/80 hover:text-white transition-colors hover:scale-110 transform duration-200"
                 aria-label="Follow Hookly on Instagram"
               >
                 <Instagram size={24} />
@@ -27,7 +27,7 @@ const Footer = () => {
                 href="https://tiktok.com/@hookly"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-300 hover:text-white transition-colors"
+                className="text-white/80 hover:text-white transition-colors hover:scale-110 transform duration-200"
                 aria-label="Follow Hookly on TikTok"
               >
                 <Music size={24} />
@@ -37,29 +37,29 @@ const Footer = () => {
 
           {/* Center - Copyright */}
           <div className="text-center">
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <div className="w-6 h-6 bg-gradient-to-br from-brand-primary to-brand-purple rounded-md flex items-center justify-center">
-                <span className="text-white font-bold text-sm">H</span>
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-8 h-8 rounded-xl flex items-center justify-center" style={{background: 'var(--gradient-primary)'}}>
+                <span className="text-white font-bold">🪝</span>
               </div>
-              <span className="text-xl font-bold text-white">Hookly</span>
+              <span className="text-2xl font-bold text-white">Hookly</span>
             </div>
-            <p className="text-slate-400 text-sm">
+            <p className="text-white/60 text-sm">
               © Hookly, 2025. All rights reserved.
             </p>
           </div>
 
           {/* Right - Legal Links */}
           <div className="text-center md:text-right">
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-3">
               <a
                 href="/privacy"
-                className="text-slate-300 hover:text-white transition-colors"
+                className="text-white/80 hover:text-white transition-colors"
               >
                 Privacy Policy
               </a>
               <a
                 href="/terms"
-                className="text-slate-300 hover:text-white transition-colors"
+                className="text-white/80 hover:text-white transition-colors"
               >
                 Terms of Use
               </a>

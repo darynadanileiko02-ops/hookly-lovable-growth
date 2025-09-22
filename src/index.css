@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Hookly Design System - Minimalist and Modern
+/* Hookly Design System - Colorful & Playful
 All colors MUST be HSL for consistency
 */
 
@@ -12,27 +12,36 @@ All colors MUST be HSL for consistency
     --background: 0 0% 100%;
     --foreground: 210 11% 33%;
 
-    /* Brand colors */
-    --brand-primary: 36 100% 67%; /* Soft Orange #FFAA55 */
+    /* Brand colors - Vibrant & Playful */
+    --brand-primary: 33 100% 50%; /* Vibrant Orange #F59E0B */
     --brand-primary-foreground: 0 0% 100%;
     
-    --brand-purple: 262 90% 66%; /* Purple #A855F7 */
+    --brand-purple: 262 83% 58%; /* Purple #A855F7 */
     --brand-purple-foreground: 0 0% 100%;
     
-    --brand-pink: 330 100% 71%; /* Pink #FF69B4 */
+    --brand-purple-deep: 262 80% 40%; /* Deeper Purple #6D28D9 */
+    --brand-purple-deep-foreground: 0 0% 100%;
+    
+    --brand-pink: 330 81% 60%; /* Pink #EC4899 */
     --brand-pink-foreground: 0 0% 100%;
+    
+    --brand-pink-light: 330 77% 68%; /* Light Pink #F472B6 */
+    --brand-pink-light-foreground: 0 0% 100%;
+
+    --brand-orange: 33 100% 50%; /* Orange #F59E0B */
+    --brand-orange-deep: 16 85% 54%; /* Deep Orange #EA580C */
 
     /* Semantic colors */
-    --primary: 36 100% 67%;
+    --primary: 33 100% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 20% 96%;
+    --secondary: 249 100% 97%; /* Light purple tint #F3E8FF */
     --secondary-foreground: 210 11% 33%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 262 90% 66%;
+    --accent: 262 83% 58%;
     --accent-foreground: 0 0% 100%;
 
     --card: 0 0% 100%;
@@ -46,7 +55,7 @@ All colors MUST be HSL for consistency
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 36 100% 67%;
+    --ring: 33 100% 50%;
 
     /* Spacing system */
     --section-padding: 5rem; /* 80px */
@@ -58,19 +67,27 @@ All colors MUST be HSL for consistency
     --radius-sm: 0.5rem;
     --radius-lg: 1rem;
 
-    /* Shadows */
-    --shadow-soft: 0 4px 24px -4px hsl(var(--primary) / 0.1);
+    /* Shadows & Glows */
+    --shadow-soft: 0 4px 24px -4px hsl(var(--primary) / 0.15);
     --shadow-card: 0 1px 3px 0 hsl(210 11% 15% / 0.1), 0 1px 2px 0 hsl(210 11% 15% / 0.06);
     --shadow-button: 0 4px 14px 0 hsl(var(--primary) / 0.25);
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.3);
+    --shadow-purple-glow: 0 0 40px hsl(var(--brand-purple) / 0.4);
 
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--brand-primary)), hsl(var(--brand-purple)));
-    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 20% 98%));
+    /* Vibrant Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--brand-purple)), hsl(var(--brand-pink)));
+    --gradient-primary: linear-gradient(135deg, hsl(var(--brand-orange)), hsl(var(--brand-orange-deep)));
+    --gradient-purple: linear-gradient(135deg, hsl(var(--brand-purple)), hsl(var(--brand-purple-deep)));
+    --gradient-pink: linear-gradient(135deg, hsl(var(--brand-pink)), hsl(var(--brand-pink-light)));
     --gradient-accent: linear-gradient(135deg, hsl(var(--brand-purple)), hsl(var(--brand-pink)));
+    --gradient-orange: linear-gradient(135deg, hsl(var(--brand-orange)), hsl(var(--brand-orange-deep)));
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(249 100% 98%));
+    --gradient-blob: linear-gradient(135deg, hsl(45 100% 91%), hsl(48 100% 88%)); /* Beige blob #FDE68A */
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-glow: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -158,44 +175,119 @@ All colors MUST be HSL for consistency
 }
 
 @layer components {
-  /* Hero section styling */
+  /* Hero section with vibrant gradient */
   .hero-section {
-    @apply min-h-[80vh] flex items-center justify-center;
+    @apply min-h-[80vh] flex items-center justify-center relative overflow-hidden;
+    background: var(--gradient-hero);
     padding: var(--section-padding) 1rem;
   }
 
-  /* Card components with Hookly styling */
+  /* Colorful gradient sections */
+  .section-purple {
+    background: var(--gradient-purple);
+  }
+
+  .section-orange {
+    background: var(--gradient-orange);
+  }
+
+  .section-blob {
+    background: var(--gradient-blob);
+  }
+
+  /* Card components with playful styling */
   .benefit-card {
-    @apply bg-card rounded-[var(--radius)] p-[var(--card-padding)] text-center border border-border/50;
+    @apply bg-secondary rounded-[var(--radius)] p-[var(--card-padding)] text-center border-0;
     box-shadow: var(--shadow-card);
-    transition: var(--transition-smooth);
+    transition: var(--transition-bounce);
   }
 
   .benefit-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-soft);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-purple-glow);
   }
 
-  /* Button variants */
+  .testimonial-card {
+    @apply bg-white/95 backdrop-blur-sm rounded-[var(--radius)] p-6 text-center border-0;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-smooth);
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Vibrant button variants */
   .btn-hero {
-    @apply bg-primary text-primary-foreground rounded-[var(--radius)] px-8 py-4 font-semibold text-lg;
+    background: var(--gradient-primary);
+    @apply text-white rounded-[var(--radius)] px-8 py-4 font-semibold text-lg border-0;
     box-shadow: var(--shadow-button);
     transition: var(--transition-bounce);
   }
 
   .btn-hero:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 8px 25px -5px hsl(var(--primary) / 0.35);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: var(--shadow-glow);
   }
 
   .btn-secondary {
-    @apply border-2 border-muted-foreground/30 text-foreground bg-background rounded-[var(--radius)] px-8 py-4 font-semibold text-lg;
-    transition: var(--transition-smooth);
+    @apply border-2 border-white/80 text-white bg-white/10 backdrop-blur-sm rounded-[var(--radius)] px-8 py-4 font-semibold text-lg;
+    transition: var(--transition-bounce);
   }
 
   .btn-secondary:hover {
-    @apply border-primary/50 text-primary bg-primary/5;
-    transform: translateY(-1px);
+    @apply bg-white text-brand-purple border-white;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Organic blob shapes */
+  .blob-shape {
+    @apply absolute rounded-full opacity-20;
+    background: var(--gradient-blob);
+    filter: blur(40px);
+  }
+
+  .blob-1 {
+    top: -10%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+  }
+
+  .blob-2 {
+    bottom: -20%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+  }
+
+  /* Icon animations */
+  .bounce-icon {
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .float-icon {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
   }
 
   /* Section spacing */
@@ -213,6 +305,11 @@ All colors MUST be HSL for consistency
     animation: fadeInUp 0.6s ease-out forwards;
   }
 
+  .fade-in-delay {
+    @apply opacity-0 translate-y-4;
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  }
+
   @keyframes fadeInUp {
     to {
       opacity: 1;
@@ -220,8 +317,19 @@ All colors MUST be HSL for consistency
     }
   }
 
-  /* Footer styling */
+  /* Footer styling with dark purple */
   .footer-section {
-    @apply bg-slate-800 text-white;
+    background: var(--gradient-purple);
+  }
+
+  /* Star ratings */
+  .star-rating {
+    @apply text-yellow-400 text-lg;
+  }
+
+  /* Yellow bubble tag */
+  .bubble-tag {
+    @apply bg-yellow-300 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold inline-block;
+    box-shadow: 0 4px 12px hsl(48 100% 50% / 0.3);
   }
 }
